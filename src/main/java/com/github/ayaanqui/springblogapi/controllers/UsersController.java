@@ -1,5 +1,7 @@
 package com.github.ayaanqui.springblogapi.controllers;
 
+import java.util.Optional;
+
 import com.github.ayaanqui.springblogapi.models.User;
 import com.github.ayaanqui.springblogapi.repositories.UserRepository;
 
@@ -41,5 +43,10 @@ public class UsersController {
     @GetMapping("")
     public @ResponseBody Iterable<User> getUsers() {
         return userRepository.findAll();
+    }
+
+    @GetMapping("/")
+    public @ResponseBody Optional<User> getUser(@RequestParam int id) {
+        return userRepository.findById(id);
     }
 }
