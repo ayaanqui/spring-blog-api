@@ -11,20 +11,12 @@ public class GreetingsController {
     private final AtomicLong counter = new AtomicLong();
 
     private class Greeting {
-        private final long id;
-        private final String content;
+        final long id;
+        final String content;
 
         public Greeting(long id, String content) {
             this.id = id;
             this.content = content;
-        }
-
-        public long getId() {
-            return this.id;
-        }
-
-        public String getContent() {
-            return this.content;
         }
     }
 
