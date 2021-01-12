@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+@Controller()
 @RestController()
 public class GreetingsController {
     private static final String template = "Hello, %s";
@@ -17,6 +18,14 @@ public class GreetingsController {
         public Greeting(long id, String content) {
             this.id = id;
             this.content = content;
+        }
+
+        public long getId() {
+            return id;
+        }
+
+        public String getContent() {
+            return content;
         }
     }
 
