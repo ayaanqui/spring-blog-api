@@ -16,20 +16,8 @@ public class UsersController {
     @Autowired
     private UserRepository userRepository;
 
-    private class Response {
-        private final String message;
-
-        public Response(String message) {
-            this.message = message;
-        }
-
-        public String getMessage() {
-            return this.message;
-        }
-    }
-
     @PostMapping("")
-    public @ResponseBody Response postNewUser(@RequestParam String name, @RequestParam String email,
+    public @ResponseBody Object postNewUser(@RequestParam String name, @RequestParam String email,
             @RequestParam String username) {
         User user = new User();
         user.setName(name);
@@ -37,7 +25,9 @@ public class UsersController {
         user.setUsername(username);
 
         userRepository.save(user);
-        return new Response("User created successfully!");
+        return new Object() {
+            public String message = "User created";
+        };
     }
 
     @GetMapping("")

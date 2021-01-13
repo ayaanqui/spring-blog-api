@@ -5,8 +5,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller()
-@RestController()
+@Controller
+@RestController
 public class GreetingsController {
     private static final String template = "Hello, %s";
     private final AtomicLong counter = new AtomicLong();
