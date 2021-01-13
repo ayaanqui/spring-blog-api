@@ -45,8 +45,8 @@ public class UsersController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/")
-    public @ResponseBody Optional<User> getUser(@RequestParam int id) {
+    @GetMapping("/{id}")
+    public @ResponseBody Optional<User> getUser(@PathVariable("id") int id) {
         return userRepository.findById(id);
     }
 }
