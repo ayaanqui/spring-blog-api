@@ -5,8 +5,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 
 import com.github.ayaanqui.springblogapi.models.Post;
+import com.github.ayaanqui.springblogapi.serializers.PostSerailizer.PostInfo;
 import com.github.ayaanqui.springblogapi.repositories.PostRepository;
 
 @Controller
@@ -17,8 +19,13 @@ public class PostController {
     private PostRepository postRepository;
 
     @GetMapping("")
-    public @ResponseBody Iterable<Post> getPosts() {
-        return postRepository.findAll();
+    public @ResponseBody ArrayList<PostInfo> getPosts() {
+        Iterable<Post> posts = postRepository.findAll();
+        ArrayList<PostInfo> postsInfo = new ArrayList<>();
+        for (Post p : posts) {
+            postsInfo.add(new PostInfo(p));
+        }
+        return postsInfo;
     }
 
     @PostMapping("")
