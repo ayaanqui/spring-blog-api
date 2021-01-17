@@ -17,6 +17,7 @@ public class Post {
 
     private String image;
 
+    @Lob
     @NonNull
     private String content;
 
